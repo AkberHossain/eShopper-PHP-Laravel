@@ -1,0 +1,1 @@
+images and js should be in eShopper folder
