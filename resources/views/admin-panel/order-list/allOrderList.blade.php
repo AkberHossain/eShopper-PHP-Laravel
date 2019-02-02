@@ -33,10 +33,10 @@
 
                     <div class="col-lg-3 col-md-3 col-sm-3">
                         <select class="form-control pull-right row b-none" id="status_dropdown">
-                            <option value="3" >All Status</option>
-                            <option value="0" >Processing</option>
-                            <option value="1" >Delivering</option>
-                            <option value="2" >Delivered </option>
+                            <option value="3" <?php if($status == 3)echo "selected"; ?> >All Status</option>
+                            <option value="0" <?php if($status == 0)echo "selected"; ?> >Processing</option>
+                            <option value="1" <?php if($status == 1)echo "selected"; ?> >Delivering</option>
+                            <option value="2" <?php if($status == 2)echo "selected"; ?> >Delivered </option>
                         </select>   
                         
                     </div>
@@ -86,7 +86,7 @@
                                                     </td>
                                                     <td>
                                                         @if($order->status == 2)
-                                                            <a href="#" class="btn btn-success">Details</a>
+                                                            <a href="{{ route('admin.orderdetails' , $order->id) }}" class="btn btn-success">Details</a>
                                                         @else
                                                             <a href="{{ route('admin.ordermodify' , $order->id) }}" class="btn btn-primary">Modify</a>
                                                         @endif 
@@ -121,18 +121,7 @@
 
                 var status = $("#status_dropdown").val();
 
-                $.ajax({
-
-                    url:"/admin-orderbystatus/"+status ,
-                    type: "GET" ,
-                    success:function(data){
-
-                        console.log(data);
-
-                    }
-
-                });
-
+                window.location.replace('/admin-orderbystatus/'+status);
             });
         });
 

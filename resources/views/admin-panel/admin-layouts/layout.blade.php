@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('plugins/images/favicon.png') }}">
     <title>Ample Admin Template - The Ultimate Multipurpose admin template</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,22 +21,22 @@
     <link type="text/css" 
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
     <!-- Menu CSS -->
-    <link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <link href="{{ asset('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
     <!-- toast CSS -->
-    <link href="plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="{{ asset('plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <!-- morris CSS -->
-    <link href="plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <link href="{{ asset('plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
     <!-- chartist CSS -->
-    <link href="plugins/bower_components/chartist-js/dist/chartist.min.css" rel="stylesheet">
-    <link href="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css') }}" rel="stylesheet">
     <!-- animation CSS -->
-    <link href="css/animate.css" rel="stylesheet">
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     
     <!-- color CSS -->
-    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <link href="{{ asset('css/colors/default.css') }}" id="theme" rel="stylesheet">
 
     <link href="{{ asset('css/bootstrap-tokenfield.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tokenfield-typeahead.css') }}" rel="stylesheet">
@@ -51,6 +51,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 </head>
 
@@ -150,30 +151,29 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
+
     <!-- Menu Plugin JavaScript -->
-    <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <script src="{{ asset('plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
     <!--slimscroll JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
     <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="{{ asset('js/waves.js') }}"></script>
     <!--Counter js -->
-    <script src="plugins/bower_components/waypoints/lib/jquery.waypoints.js"></script>
-    <script src="plugins/bower_components/counterup/jquery.counterup.min.js"></script>
+    <script src="{{ asset('plugins/bower_components/waypoints/lib/jquery.waypoints.js') }}"></script>
+    <script src="{{ asset('plugins/bower_components/counterup/jquery.counterup.min.js') }}"></script>
     <!-- chartist chart -->
-    <script src="plugins/bower_components/chartist-js/dist/chartist.min.js"></script>
-    <script src="plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="{{ asset('plugins/bower_components/chartist-js/dist/chartist.min.js') }}"></script>
+    <script src="{{ asset('plugins/bower_components/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js') }}"></script>
     <!-- Sparkline chart JavaScript -->
-    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="{{ asset('plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/custom.min.js"></script>
-    <script src="js/dashboard1.js"></script>
-    <script src="plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    <script src="{{ asset('js/custom.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard1.js') }}"></script>
+    <script src="{{ asset('plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
 
-    
 
+   
     @stack('extra_scripts')
 
 

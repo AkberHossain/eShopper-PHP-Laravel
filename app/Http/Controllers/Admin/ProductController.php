@@ -47,6 +47,81 @@ class ProductController extends Controller
         return view('admin-panel.products.product_create_form' , compact('categories'));
     }
 
+    ///product Update
+
+    public function update(Request $request)
+    {
+
+        // ///Validation
+
+        // ///create product
+        // if($request->hasFile('cover_image'))
+        //     $path = $request->file('cover_image')->store('product_image');
+
+        // $product = Product::create([
+
+        //     'name' => $request->name , 
+        //     'sell_price' => $request->sell_price , 
+        //     'buy_price' => $request->buy_price , 
+        //     'short_description' => $request->short_desc , 
+        //     'stock' => $request->stock , 
+        //     'user_id' => Session::get('user_id') , 
+        //     'long_description' => $request->details_desc , 
+        //     'cover_image' => $path ,
+
+        // ]);
+
+        // ///create product-categories table value
+
+        // foreach($request->categories as $category)
+        // {
+        //     Product_Category::create(
+        //         [
+        //             'product_id' => $product->id ,
+        //             'category_id' => $category
+        //         ]
+        //     );
+        // }
+
+        // //craete product_tags table
+
+        // $tags = explode("," , $request->tags[0] );
+
+        // foreach($tags as $tag)
+        // {
+
+        //     $found_tag = Tag::where('name' , $tag)->first();
+
+        //     if($found_tag)
+        //     {
+        //         Product_Tag::create(
+        //             [
+        //                 'product_id' => $product->id ,
+        //                 'tag_id' => $found_tag['id'] ,
+        //             ]
+        //         );
+        //     }
+        //     else
+        //     {   
+        //         $new_tag = Tag::create([
+        //             'name' => $tag ,
+        //         ]);
+
+        //         Product_Tag::create(
+        //             [
+        //                 'product_id' => $product->id ,
+        //                 'tag_id' => $new_tag->id ,
+        //             ]
+        //         );
+        //     }
+        // }
+
+
+        // return redirect()->route('admin.product');
+    }
+
+    ///product create new
+
     public function store(Request $request)
     {
 

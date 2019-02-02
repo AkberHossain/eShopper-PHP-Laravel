@@ -31,7 +31,7 @@
                         <h3 class="agileinfo_sign">Shipping Information </h3>
                         <div class="styled-input agile-styled-input-top">
                             <p>Name</p>
-                            <input type="text" name="name"  value="{{$shipping_info['name'] }}" >
+                            <input type="text" name="name"  value="{{$shipping_info->name }}" >
                             <span></span>
                         </div>
                         <div class="styled-input">
@@ -49,20 +49,6 @@
                             <input type="text" name="address" required="" value="{{$shipping_info->address}}"> 
                             <span></span>
                         </div> 
-                        <form action="{{ route('admin.modifysave' , $order->id) }}" method="POST">
-                        {{ csrf_field() }}
-                        <div class="styled-input">
-                        <p>Order Status</p>
-                            <select class="form-control row b-none" name="status" id="status_dropdown">
-                                    <option value="0" <?php if($order->status == 0)echo "selected"; ?> >Processing</option>
-                                    <option value="1" <?php if($order->status == 1)echo "selected"; ?> >Delivering</option>
-                                    <option value="2" <?php if($order->status == 2)echo "selected"; ?> >Delivered </option>
-                                </select>
-        
-                                <span></span>
-                            </div>  <br><br>
-                            <input type="submit" class="btn btn-success" name="submit" value="Confirm Changing Status">
-                        </form>
                 </div>
                 <div class="col-lg-6 col-md-4 col-sm-4 col-xs-6">
                     <br><h2><b>Product Details</b></h2><br>
@@ -81,7 +67,7 @@
                             <tbody>
                                 @foreach($ordered_products as $ordered_product)
                                 <tr>
-                                    <td><img height="60px" width="80px" src="{{ asset('storage/'.$ordered_product->getProductbyID($ordered_product['product_id'])->cover_image) }}" ></td>
+                                    <td><img height="60px" width="80px" src="{{ asset('storage/'.$product['product']['cover_image']) }}" ></td>
                                     <td>{{ $ordered_product->getProductbyID($ordered_product['product_id'])->name }}</td>
                                     <td>{{ $ordered_product['quantity'] }}</td>
                                 </tr>

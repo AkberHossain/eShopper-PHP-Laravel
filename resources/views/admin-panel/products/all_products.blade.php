@@ -52,7 +52,7 @@
                                         @foreach($products as $product)
                                             <tr>
                                                 <td></td>
-                                                <td></td>
+                                                <td><img src="{{ asset('storage/'.$product->cover_image) }}" data-imagezoom="true" class="img-responsive"></td>
                                                 <td>{{$product->name}}</td>
                                                 <td>{{$product->sell_price}}</td>
                                                 <td>{{$product->buy_price}}</td>

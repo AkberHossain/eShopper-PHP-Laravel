@@ -10,7 +10,7 @@
                         <h2 class="page-title">Products Information</h2> 
                   </div>
                   <br>
-                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('product.update') }}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                       <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
@@ -51,7 +51,7 @@
 
                       
             
-                      <button type="submit" class="btn btn-primary">Create Product</button>
+                      <button type="submit" class="btn btn-primary">Confirm Save</button>
                     </form>
                 </div>
             </div>

@@ -32,6 +32,7 @@ Route::group(
         Route::get('/admin-productdetails/{id}' , 'ProductController@productDetails')->name('admin.product-details');
         Route::get('/product-create' , 'ProductController@create')->name('product.create');
         Route::post('/product-store' , 'ProductController@store')->name('product.store');
+        Route::post('/product-update' , 'ProductController@update')->name('product.update');
 
         //Category Control
         Route::get('/admin-category' , 'CategoryController@showCategories')->name('admin.category');
@@ -55,7 +56,8 @@ Route::group(
         Route::post('/admin-orderbyid' , 'OrderlistController@showOrderListByID')->name('admin.orderbyid');
         Route::get('/admin-orderbystatus/{status}' , 'OrderlistController@showOrderListByStatus')->name('admin.orderbystatus');
         Route::get('/admin-ordermodify/{id}' , 'OrderlistController@showOrderModify')->name('admin.ordermodify');
-
+        Route::get('/admin-orderdetails/{id}' , 'OrderlistController@showOrderDetails')->name('admin.orderdetails');
+        Route::post('/admin-modifysave/{id}' , 'OrderlistController@changeOrderModifyStatus')->name('admin.modifysave');
     }
     
 
