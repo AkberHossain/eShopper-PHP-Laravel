@@ -7,14 +7,14 @@
               <div class="row bg-title">
                   <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                   <div>
-                        <h2 class="page-title">Enter Categories Information</h2> 
+                        <h2 class="page-title">Update Categories Information</h2> 
                   </div>
                   <br>
-                    <form action="{{ route('category.store') }}" method="POST">
+                    <form action="{{ route('category.update' , $category->id) }}" method="POST">
                       {{ csrf_field() }}
                       <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="text" value="{{$category->name}}" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                       </div>
 
                       <div class="form-group">
@@ -26,7 +26,7 @@
                         </select>
                       </div>
             
-                      <button type="submit" class="btn btn-primary">Create Product</button>
+                      <button type="submit" class="btn btn-primary">Confirm Change</button>
                     </form>
                 </div>
             </div>

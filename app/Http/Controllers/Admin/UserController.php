@@ -15,6 +15,22 @@ class UserController extends Controller
 
         $compact = compact('users');
 
-        return view( 'admin-panel.users.user-list'  , $compact);
+        return view( 'admin-panel.users.user_list'  , $compact);
+    }
+
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return redirect()->route('admin.user');
+    }
+
+    public function details($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view( 'admin-panel.users.user_details' ,compact('user'));
     }
 }

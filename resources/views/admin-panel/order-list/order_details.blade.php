@@ -13,7 +13,7 @@
                     <h3>Odred Date:{{$order->date}}</h3>
                     <br>
                     <div>
-                            <h2 class="page-title">Modify Order Status</h2> 
+                            <h2 class="page-title">Details Information</h2> 
                     </div>
                     <br>
                         
@@ -31,22 +31,22 @@
                         <h3 class="agileinfo_sign">Shipping Information </h3>
                         <div class="styled-input agile-styled-input-top">
                             <p>Name</p>
-                            <input type="text" name="name"  value="{{$shipping_info->name }}" >
+                            <input type="text" disabled name="name"  value="{{$shipping_info->name }}" >
                             <span></span>
                         </div>
                         <div class="styled-input">
                         <p>Email</p>
-                            <input type="email" name="email" required="" value="{{$shipping_info->email}}">
+                            <input type="email" disabled name="email" required="" value="{{$shipping_info->email}}">
                             <span></span>
                         </div> 
                         <div class="styled-input ">
                         <p>Phone No</p>
-                            <input type="text" name="phone" required="" value="{{$shipping_info->phone}}">
+                            <input type="text" disabled name="phone" required="" value="{{$shipping_info->phone}}">
                             <span></span>
                         </div>
                         <div class="styled-input">
                         <p>Address</p>
-                            <input type="text" name="address" required="" value="{{$shipping_info->address}}"> 
+                            <input type="text" disabled name="address" required="" value="{{$shipping_info->address}}"> 
                             <span></span>
                         </div> 
                 </div>
@@ -67,7 +67,7 @@
                             <tbody>
                                 @foreach($ordered_products as $ordered_product)
                                 <tr>
-                                    <td><img height="60px" width="80px" src="{{ asset('storage/'.$product['product']['cover_image']) }}" ></td>
+                                <td><img height="60px" width="80px" src="{{ asset('storage/'.$ordered_product->getProductbyID($ordered_product['product_id'])->cover_image) }}" ></td>
                                     <td>{{ $ordered_product->getProductbyID($ordered_product['product_id'])->name }}</td>
                                     <td>{{ $ordered_product['quantity'] }}</td>
                                 </tr>

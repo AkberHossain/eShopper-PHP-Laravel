@@ -40,6 +40,7 @@
 
     <link href="{{ asset('css/bootstrap-tokenfield.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tokenfield-typeahead.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.auto-complete.css') }}" rel="stylesheet">
 
     <!-- For select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -80,7 +81,7 @@
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
-                        <a class="profile-pic" href="{{ route('user.profile') }}"> <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ Session::get('user_name') }}</b></a>
+                        <a class="profile-pic" href="{{ route('user.profile') }}"> <b class="hidden-xs">Welcome , {{ Session::get('user_name') }}</b></a>
                     </li>
                 </ul>
             </div>
@@ -114,7 +115,7 @@
                         <a href="/admin-contact" class="waves-effect">Contact Info</a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect">Offers</a>
+                        <a href="#" class="waves-effect" disabled>Offers</a>
                     </li>
                     <li>
                         <a href="/admin-orderlist" class="waves-effect">Order Lists</a>
@@ -171,8 +172,7 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
     <script src="{{ asset('js/dashboard1.js') }}"></script>
     <script src="{{ asset('plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
-
-
+    <script src="{{ asset('js/jquery.auto-complete.js') }}"></script>
    
     @stack('extra_scripts')
 

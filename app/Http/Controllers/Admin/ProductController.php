@@ -22,8 +22,6 @@ class ProductController extends Controller
 
         $product_categories = (array)$product->allCategories;
 
-        //dd($product_categories);
-
         $categories = Category::all();
 
         $compact = compact('product' , 'categories' , 'product_categories');
@@ -49,75 +47,84 @@ class ProductController extends Controller
 
     ///product Update
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
 
-        // ///Validation
+        ///Validation
 
-        // ///create product
-        // if($request->hasFile('cover_image'))
-        //     $path = $request->file('cover_image')->store('product_image');
+        ///update product
 
-        // $product = Product::create([
+        $product = Product::findOrFail($id);
 
-        //     'name' => $request->name , 
-        //     'sell_price' => $request->sell_price , 
-        //     'buy_price' => $request->buy_price , 
-        //     'short_description' => $request->short_desc , 
-        //     'stock' => $request->stock , 
-        //     'user_id' => Session::get('user_id') , 
-        //     'long_description' => $request->details_desc , 
-        //     'cover_image' => $path ,
+        $path = $product->cover_image;
 
-        // ]);
+        if($request->hasFile('cover_image')){
+            $path = $request->file('cover_image')->store('product_image');
+        }
+        $product->update([
 
-        // ///create product-categories table value
+            'name' => $request->name , 
+            'sell_price' => $request->sell_price , 
+            'buy_price' => $request->buy_price , 
+            'short_description' => $request->short_desc , 
+            'stock' => $request->stock , 
+            'user_id' => Session::get('user_id') , 
+            'long_description' => $request->details_desc , 
+            'cover_image' => $path ,
 
-        // foreach($request->categories as $category)
-        // {
-        //     Product_Category::create(
-        //         [
-        //             'product_id' => $product->id ,
-        //             'category_id' => $category
-        //         ]
-        //     );
-        // }
+        ]);
 
-        // //craete product_tags table
+        ///create product-categories table value
 
-        // $tags = explode("," , $request->tags[0] );
+        $deletedProductCategories = Product_Category::where('product_id', $id)->delete();
 
-        // foreach($tags as $tag)
-        // {
+        foreach($request->categories as $category)
+        {
+            Product_Category::create(
+                [
+                    'product_id' => $product->id ,
+                    'category_id' => $category
+                ]
+            );
+        }
 
-        //     $found_tag = Tag::where('name' , $tag)->first();
+        //craete product_tags table
 
-        //     if($found_tag)
-        //     {
-        //         Product_Tag::create(
-        //             [
-        //                 'product_id' => $product->id ,
-        //                 'tag_id' => $found_tag['id'] ,
-        //             ]
-        //         );
-        //     }
-        //     else
-        //     {   
-        //         $new_tag = Tag::create([
-        //             'name' => $tag ,
-        //         ]);
+        $deletedProductCategories = Product_Tag::where('product_id', $id)->delete();
 
-        //         Product_Tag::create(
-        //             [
-        //                 'product_id' => $product->id ,
-        //                 'tag_id' => $new_tag->id ,
-        //             ]
-        //         );
-        //     }
-        // }
+        $tags = explode("," , $request->tags[0] );
+
+        foreach($tags as $tag)
+        {
+
+            $found_tag = Tag::where('name' , $tag)->first();
+
+            if($found_tag)
+            {
+                Product_Tag::create(
+                    [
+                        'product_id' => $product->id ,
+                        'tag_id' => $found_tag['id'] ,
+                    ]
+                );
+            }
+            else
+            {   
+                $new_tag = Tag::create([
+                    'name' => $tag ,                
+                ]);
+
+                Product_Tag::create(
+                    [
+                        'product_id' => $product->id ,
+                        'tag_id' => $new_tag->id ,
+                    ]
+                );
+            }
+        }
 
 
-        // return redirect()->route('admin.product');
+        return redirect()->route('admin.product');
     }
 
     ///product create new
@@ -189,6 +196,15 @@ class ProductController extends Controller
             }
         }
 
+
+        return redirect()->route('admin.product');
+    }
+
+    public function delete($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $product->delete();
 
         return redirect()->route('admin.product');
     }

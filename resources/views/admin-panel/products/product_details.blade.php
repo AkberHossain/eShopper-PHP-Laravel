@@ -10,7 +10,7 @@
                         <h2 class="page-title">Products Information</h2> 
                   </div>
                   <br>
-                    <form action="{{ route('product.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('product.update' , $product->id) }}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
                       <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
@@ -43,11 +43,23 @@
                       </div>
 
                       <div class="form-group">
+                        <img src="{{ asset('storage/'.$product->cover_image) }}" height="50px" width="50px" >
+                      <div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Cover Image</label>
+                        <input type="file" name="cover_image">
+                      </div>
+
+                      <div class="form-group">
                         <label for="exampleInputEmail1">Details Description</label>
                         <textarea class="form-control" name="details_desc">{{ $product->long_description }}</textarea>
                       </div>
 
-                      
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Tags</label>
+                        <input type="text" name="tags[]" class="form-control" id="tokenfield" value="" />
+                      </div>
 
                       
             
@@ -63,9 +75,21 @@
 @push('extra_scripts')
 <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="{{ asset('js/bootstrap-tokenfield.js') }}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
-    
+    $(document).ready(function(){
+
+      $('.select2').select2();
+
+      $('#tokenfield').tokenfield({
+        autocomplete: {
+          source: "{{ url('/tag-find') }}" ,
+          delay: 100
+        },
+        showAutocompleteOnFocus: true 
+      });
+
+    });
 </script>
 
 @endpush

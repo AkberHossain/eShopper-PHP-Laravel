@@ -63,8 +63,9 @@
                                                 </td>
                                                 <td>{{$user->created_at}}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary">Order List</a>
-                                                    <a href="#" class="btn btn-primary">Delete</a>
+                                                    <a href="{{ route('admin.user-details' , $user->id) }}" class="btn btn-primary">Details</a>
+                                                    <a href="{{ route('admin.user-orderlist' , $user->id) }}" class="btn btn-primary">Order List</a>
+                                                    <a href="{{ route('admin.user-delete' , $user->id) }}" class="btn btn-primary">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach

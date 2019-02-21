@@ -71,10 +71,12 @@
 
 @push('extra_scripts')
 <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="{{ asset('js/bootstrap-tokenfield.js') }}"></script>
-
 <script>
     $(document).ready(function(){
+
+      $('.select2').select2();
 
       $('#tokenfield').tokenfield({
         autocomplete: {

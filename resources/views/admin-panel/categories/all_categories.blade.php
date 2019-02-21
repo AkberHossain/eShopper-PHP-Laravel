@@ -43,8 +43,8 @@
                                                 <td></td>
                                                 <td>{{$category->name}}</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary">Details</a>
-                                                    <a href="#" class="btn btn-primary">Delete</a>
+                                                    <a href="{{ route('category.details' , $category->id) }}" class="btn btn-primary">Details</a>
+                                                    <a href="{{ route('category.delete' , $category->id) }}" class="btn btn-primary">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
